@@ -99,7 +99,7 @@ build_script:
             # update external binaries
             python src/electron/script/update-external-binaries.py
           }
-        } else {    
+        } else {  
           # file does not exist, gclient sync, then zip
           $env:RUN_GCLIENT_SYNC="true"
           if ($env:TARGET_ARCH -ne 'ia32') {
@@ -117,7 +117,7 @@ build_script:
           Write-warning "Could not save source to shared drive; continuing anyway"
         }
         # build time generation of file gen/angle/commit.h depends on
-        # third_party/angle/.git/HEAD.
+        # third_party/angle/.git/HEAD.github
         # https://chromium-review.googlesource.com/c/angle/angle/+/2074924
         if ($(7z a $zipfile src\third_party\angle\.git\HEAD;$LASTEXITCODE -ne 0)) {
           Write-warning "Failed to add third_party\angle\.git\HEAD; continuing anyway"
